@@ -1,46 +1,17 @@
 import React, { useEffect } from 'react';
-import Voice from '@react-native-voice/voice';
 import { useNavigation } from '@react-navigation/native';
 import { UserNavigationRootProps } from '../../ScreensTypes/ScreensTpes';
-import { Button, Text, View } from 'react-native';
+import { Button, SafeAreaView, Text, View } from 'react-native';
 
 export const SpeechRecognition: React.FC<UserNavigationRootProps<"SpeechRecognition">> = (props) => {
-  const navigation = props.navigation;
+  // const navigation = props.navigation;
 
-  useEffect(() => {
-    Voice.onSpeechResults = onSpeechResults;
-    return () => {
-      Voice.destroy().then(Voice.removeAllListeners);
-    };
-  }, []);
-
-  const onSpeechResults = (e:any) => {
-    const result = e.value[0].toLowerCase();
-    console.log('Recognized Speech:', result);
-    handleCommand(result);
-  };
-
-  const handleCommand = (command :any) => {
-    console.log('Handling Command:', command); // Debugging log
-    if (command.includes('go to profile screen')) {
-      navigation.navigate('ProfileScreen');
-    } else if (command.includes('go to settings')) {
-      navigation.navigate('Settings');
-    } else if (command.includes('go to order screen')) {
-      navigation.navigate('OrderScreen');
-    } else if (command.includes('go back')) {
-      navigation.goBack();
-    } else {
-      console.log('Command not recognized:', command); // Debugging log
-    }
-  };
-
-  const startListening = () => {
-    Voice.start('en-US').catch((e) => console.error(e)); // Debugging error handling
-  };
+ 
 
   return (
-        <Button title="Start Listening" onPress={startListening} />
+       <SafeAreaView>
+        <Text>sdjsdfjdskjskdjksdj</Text>
+       </SafeAreaView>
   );
 };
 
