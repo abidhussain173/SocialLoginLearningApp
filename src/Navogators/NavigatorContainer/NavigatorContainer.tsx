@@ -1,20 +1,49 @@
-import { View, Text, Button } from 'react-native'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react';
+import { View, Button } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
-import TabNavigator from '../AppNavigator/TabNavigator';
 import StackNavigator from '../AppNavigator/StackNavigator';
 import Voice from '@react-native-voice/voice';
+import { goBack, setScreen } from '../../Redux/Reducers/NavigationReducer';
+import { RootState } from '../../Redux/Store/Store';
 
-const NavigatorContainer = () => {
-    const navigation = useRef<any>("");
+const screenMappings: { [key: string]: string } = {
+    'profile screen': 'ProfileScreen',
+    'my account': 'ProfileScreen',
+    'settings': 'Settings',
+    'preferences': 'Settings',
+    'order screen': 'OrderScreen',
+    'my orders': 'OrderScreen',
+    'order history': 'OrderScreen',
+    'username': 'ProfileScreen',
+    'email': 'ProfileScreen',
+    'member since': 'ProfileScreen',
+    'notification': 'Settings',
+    'language': 'Settings',
+    'privacy': 'Settings',
+    'pizza': 'OrderScreen',
+    'burger': 'OrderScreen',
+    'salad': 'OrderScreen',
+    'go back': 'GoBack'
+};
+
+const NavigatorContainer: React.FC = () => {
+    const dispatch = useDispatch();
+    const screen = useSelector((state: RootState) => state.navigation.screen);
+    const navigationRef = useRef<any>("");
 
     useEffect(() => {
-        console.log('onSpeechResults');
         Voice.onSpeechResults = onSpeechResults;
         return () => {
             Voice.destroy().then(Voice.removeAllListeners);
         };
     }, []);
+
+    useEffect(() => {
+        if (screen) {
+            handleNavigation(screen);
+        }
+    }, [screen]);
 
     const onSpeechResults = (e: any) => {
         const result = e.value[0].toLowerCase();
@@ -22,36 +51,58 @@ const NavigatorContainer = () => {
         handleCommand(result);
     };
 
-    const handleCommand = (command: any) => {
-        console.log('Handling Command:', command);
-        if (command.includes('go to profile screen')) {
-            console.log('Handling profile screen:', command);
-            navigation.current?.navigate('ProfileScreen');
-        } else if (command.includes('go to settings')) {
-            navigation.current?.navigate('Settings');
-        } else if (command.includes('go to order screen')) {
-            navigation.current?.navigate('OrderScreen');
-        } else if (command.includes('go back')) {
-            navigation.current?.navigate.goBack();
+    const handleCommand = (command: string) => {
+        const lowerCaseCommand = command.toLowerCase();
+
+        for (let phrase in screenMappings) {
+            if (lowerCaseCommand.includes(phrase)) {
+                dispatch(setScreen(screenMappings[phrase]));
+                return;
+            }
+        }
+
+        if (lowerCaseCommand.includes('go back')) {
+            dispatch(goBack());
         } else {
             console.log('Command not recognized:', command);
         }
     };
 
-    const startListening = () => {
-        Voice.start('en-US').catch((e) => console.error(e)); // Debugging error handling
+    const handleNavigation = (screen: string) => {
+        if (screen === '') return;
+        switch (screen) {
+            case 'ProfileScreen':
+                navigationRef.current?.navigate("ProfileScreen");
+                break;
+            case 'Settings':
+                navigationRef.current?.navigate("Settings");
+                break;
+            case 'OrderScreen':
+                navigationRef.current?.navigate("OrderScreen");
+                break;
+            case 'GoBack':
+                if (navigationRef.current?.canGoBack()) {
+                    navigationRef.current?.goBack();
+                    dispatch(setScreen(''));
+                }
+                break;
+            default:
+                break;
+        }
     };
+
+    const startListening = () => {
+        Voice.start('en-US').catch((e) => console.error(e));
+    };
+
     return (
-        <NavigationContainer
-            ref={navigation}
-        >
-            {/* <TabNavigator /> */}
+        <NavigationContainer ref={navigationRef}>
             <StackNavigator />
-            <View style={{ position: 'absolute', top: 100, left: 0, right: 0 }}>
+            <View style={{ position: 'absolute', bottom: 10, left: 0, right: 0 }}>
                 <Button title="Start Listening" onPress={startListening} />
             </View>
         </NavigationContainer>
-    )
-}
+    );
+};
 
-export default NavigatorContainer
+export default NavigatorContainer;

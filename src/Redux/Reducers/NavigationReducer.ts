@@ -1,15 +1,21 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-
-const NavigationReducer = createSlice({
-    name: "screenName",
-    initialState: "",
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+interface NavigationState {
+    screen: string;
+}
+const initialState: NavigationState = {
+    screen: '',
+}
+const navigationSlice = createSlice({
+    name: 'navigation',
+    initialState,
     reducers: {
-        setScreenName: (state, action: PayloadAction<string>) => {
-            return action.payload
-        }
-    }
-})
-
-export const { setScreenName } = NavigationReducer.actions
-export default NavigationReducer.reducer
-
+        setScreen(state, action: PayloadAction<string>) {
+            state.screen = action.payload;
+        },
+        goBack(state) {
+            state.screen = 'GoBack';
+        },
+    },
+});
+export const { setScreen, goBack } = navigationSlice.actions;
+export default navigationSlice.reducer;

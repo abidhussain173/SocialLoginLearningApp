@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, SafeAreaView, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { UserNavigationRootProps } from '../../ScreensTypes/ScreensTpes';
-
 
 export const OrderScreen: React.FC<UserNavigationRootProps<"OrderScreen">> = (props) => {
     return (
@@ -11,7 +10,9 @@ export const OrderScreen: React.FC<UserNavigationRootProps<"OrderScreen">> = (pr
             justifyContent: 'center'
         }}>
             <Text>Order Screen</Text>
+            <Text>Order #1: Pizza</Text>
+            <Text>Order #2: Burger</Text>
+            <Text>Order #3: Salad</Text>
         </View>
     );
 };
-

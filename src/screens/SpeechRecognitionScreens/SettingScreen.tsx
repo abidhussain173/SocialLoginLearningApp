@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, SafeAreaView, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { UserNavigationRootProps } from '../../ScreensTypes/ScreensTpes';
-
 
 export const SettingScreen: React.FC<UserNavigationRootProps<"Settings">> = (props) => {
     return (
@@ -11,7 +10,9 @@ export const SettingScreen: React.FC<UserNavigationRootProps<"Settings">> = (pro
             justifyContent: 'center'
         }}>
             <Text>Settings Screen</Text>
+            <Text>Notification: Enabled</Text>
+            <Text>Language: English</Text>
+            <Text>Privacy: Public</Text>
         </View>
     );
 };
-

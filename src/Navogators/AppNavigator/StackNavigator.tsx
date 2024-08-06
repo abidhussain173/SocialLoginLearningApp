@@ -1,19 +1,17 @@
-import React, { useEffect } from 'react';
-import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 import { UserStackParamList } from '../../ScreensTypes/ScreensTpes';
 import { SpeechRecognition } from '../../screens/SpeechRecognitionScreens/SpeechRecognition';
 import { SettingScreen } from '../../screens/SpeechRecognitionScreens/SettingScreen';
 import { OrderScreen } from '../../screens/SpeechRecognitionScreens/OrderScreen';
 import { ProfileScreen } from '../../screens/SpeechRecognitionScreens/ProfileScreen';
-import { useNavigation } from '@react-navigation/native';
 const Stack = createStackNavigator<UserStackParamList>();
-// const navigation = useNavigation<StackNavigationProp<UserStackParamList>>();
 
 const StackNavigator = () => {
     return (
         <Stack.Navigator
             screenOptions={{
-                headerShown: false,
+                headerShown: true,
             }}
             // initialRouteName={userInfo ? "Home" : "Login"}
             initialRouteName="Settings"

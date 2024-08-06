@@ -10,7 +10,7 @@ export const SpeechRecognition: React.FC<UserNavigationRootProps<"SpeechRecognit
 
   return (
        <SafeAreaView>
-        <Text>sdjsdfjdskjskdjksdj</Text>
+        <Text>Speech Recognition</Text>
        </SafeAreaView>
   );
 };
