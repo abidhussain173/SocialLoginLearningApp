@@ -5,10 +5,10 @@ import store from './src/Redux/Store/Store';
 import BookListContainer from './src/ReadBook/BookListContainer';
 
 const App: React.FC = () => (
-  // <Provider store={store}>
-  //   <NavigatorContainer />
-  // </Provider>
-  <BookListContainer />
+  <Provider store={store}>
+    <NavigatorContainer />
+  </Provider>
+  // <BookListContainer />
 );
 
 export default App;
