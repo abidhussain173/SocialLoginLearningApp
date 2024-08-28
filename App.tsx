@@ -8,7 +8,6 @@ const App: React.FC = () => (
   <Provider store={store}>
     <NavigatorContainer />
   </Provider>
-  // <BookListContainer />
 );
 
 export default App;
