@@ -137,7 +137,8 @@ const screenMappings: { [key: string]: string } = {
     'pizza': 'OrderScreen',
     'burger': 'OrderScreen',
     'salad': 'OrderScreen',
-    'go back': 'GoBack'
+    'go back': 'GoBack',
+    'back': 'GoBack'
 };
 
 const NavigatorContainer: React.FC = () => {
