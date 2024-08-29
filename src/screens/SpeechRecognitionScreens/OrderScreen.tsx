@@ -30,27 +30,33 @@ export const OrderScreen: React.FC<UserNavigationRootProps<"OrderScreen">> = (pr
                 }}>
                     <Text style={{
                         fontSize: 16,
+                         color: "black",
                         marginBottom: 10,
                     }}>Order #1:</Text>
                     <Text style={{
                         fontSize: 16,
-                        marginBottom: 10
+                        marginBottom: 10,
+                        color: "black"
                     }}>Order #2:</Text>
                     <Text style={{
                         fontSize: 16,
+                         color: "black"
                     }}>Order #3:</Text>
                 </View>
                 <View>
                     <Text style={{
                         fontSize: 16,
+                         color: "black",
                         marginBottom: 10
                     }}>Pizza</Text>
                     <Text style={{
                         fontSize: 16,
+                         color: "black",
                         marginBottom: 10
                     }}> Burger</Text>
                     <Text style={{
                         fontSize: 16,
+                         color: "black"
                     }}> Burger</Text>
                 </View>
             </View>

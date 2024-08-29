@@ -30,19 +30,23 @@ export const ProfileScreen: React.FC<UserNavigationRootProps<"ProfileScreen">> =
                 }}>
                     <Text style={{
                         fontSize: 16,
+                         color: "black",
                         marginBottom: 10
                     }}>Username:</Text>
                     <Text style={{
                         fontSize: 16,
+                         color: "black",
                     }}>Email:</Text>
                 </View>
                 <View>
                     <Text style={{
                         fontSize: 16,
+                         color: "black",
                         marginBottom: 10
                     }}>John Doe</Text>
                     <Text style={{
                         fontSize: 16,
+                         color: "black",
                     }}>john.doe@example.com</Text>
                 </View>
             </View>

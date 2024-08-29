@@ -20,9 +20,21 @@ export const SettingScreen: React.FC<UserNavigationRootProps<"Settings">> = (pro
                     }}
                 >Welcome to Setting Screen</Text>
             </View>
-            <Text>Notification: Enabled</Text>
-            <Text>Language: English</Text>
-            <Text>Privacy: Public</Text>
+            <Text style={{
+                        fontSize: 16,
+                         color: "black",
+                        marginBottom: 10,
+                    }}>Notification: Enabled</Text>
+            <Text style={{
+                        fontSize: 16,
+                         color: "black",
+                        marginBottom: 10,
+                    }}>Language: English</Text>
+            <Text style={{
+                        fontSize: 16,
+                         color: "black",
+                        marginBottom: 10,
+                    }}>Privacy: Public</Text>
         </SafeAreaView>
     );
 };

@@ -18,6 +18,31 @@ export const SpeechRecognition: React.FC<UserNavigationRootProps<"SpeechRecognit
         You can also say "Go back" to return to the previous screen.
       </Text>
     </View>
+      <Text style={{
+         fontSize: 18,
+         color:"black",
+         padding:10
+      }}>List of screens</Text>
+      <Text style={{
+         fontSize: 14,
+         color:"black",
+         marginStart:10
+      }}>{"1) Speech Recognition"}</Text>
+      <Text style={{
+         fontSize: 14,
+         color:"black",
+         marginStart:10
+      }}>{"2) Order"}</Text>
+      <Text style={{
+         fontSize: 14,
+         color:"black",
+         marginStart:10
+      }}>{"3) Profile"}</Text>
+      <Text style={{
+         fontSize: 14,
+         color:"black",
+         marginStart:10
+      }}>{"4) Setting"}</Text>
   </SafeAreaView>
   );
 };
@@ -25,7 +50,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 16,
+    padding: 10,
   },
   content: {
     alignItems: 'center',
@@ -33,11 +58,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
+    color:"black",
     marginBottom: 16,
   },
   description: {
     fontSize: 20,
-    marginHorizontal: 10,
     color: '#666',
   },
 });

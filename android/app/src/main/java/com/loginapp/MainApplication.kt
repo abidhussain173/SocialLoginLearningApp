@@ -1,4 +1,4 @@
-package com.loginapp
+package com.VoiceNavigationApp
 
 import android.app.Application
 import com.facebook.react.PackageList
