@@ -9,10 +9,43 @@ export const ProfileScreen: React.FC<UserNavigationRootProps<"ProfileScreen">> =
             alignItems: 'center',
             justifyContent: 'center'
         }}>
-            <Text>Profile Screen</Text>
-            <Text>Username: John Doe</Text>
-            <Text>Email: john.doe@example.com</Text>
-            <Text>Member since: January 2021</Text>
+            <View style={{
+                padding: 10,
+            }}>
+                <Text
+                    style={{
+                        fontSize: 30,
+                        fontWeight: 'bold',
+                        color: "orange"
+                    }}
+                >Welcome to Profile Screen</Text>
+            </View>
+            <View style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}>
+                <View style={{
+                    width: "30%"
+                }}>
+                    <Text style={{
+                        fontSize: 16,
+                        marginBottom: 10
+                    }}>Username:</Text>
+                    <Text style={{
+                        fontSize: 16,
+                    }}>Email:</Text>
+                </View>
+                <View>
+                    <Text style={{
+                        fontSize: 16,
+                        marginBottom: 10
+                    }}>John Doe</Text>
+                    <Text style={{
+                        fontSize: 16,
+                    }}>john.doe@example.com</Text>
+                </View>
+            </View>
         </View>
     );
 };

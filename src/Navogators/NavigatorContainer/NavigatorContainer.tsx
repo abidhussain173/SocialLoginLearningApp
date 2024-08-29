@@ -109,7 +109,7 @@
 
 // export default NavigatorContainer;
 import React, { useEffect, useRef } from 'react';
-import { View, Button } from 'react-native';
+import { View, Button, TouchableOpacity, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from '../AppNavigator/StackNavigator';
@@ -119,10 +119,14 @@ import { goBack, setScreen } from '../../Redux/Reducers/NavigationReducer';
 import { RootState } from '../../Redux/Store/Store';
 
 const screenMappings: { [key: string]: string } = {
+    'Speech Recognition': 'SpeechRecognition',
+    'Speech screen': 'SpeechRecognition',
+    'Speech': 'SpeechRecognition',
     'profile screen': 'ProfileScreen',
     'profile': 'ProfileScreen',
     'my account': 'ProfileScreen',
     'settings': 'Settings',
+    'setting': 'Settings',
     'preferences': 'Settings',
     'order screen': 'OrderScreen',
     'order': 'OrderScreen',
@@ -192,6 +196,9 @@ const NavigatorContainer: React.FC = () => {
     const handleNavigation = (screen: string) => {
         if (screen === '') return;
         switch (screen) {
+            case 'SpeechRecognition':
+                navigationRef.current?.navigate("SpeechRecognition");
+                break;
             case 'ProfileScreen':
                 navigationRef.current?.navigate("ProfileScreen");
                 break;
@@ -219,9 +226,26 @@ const NavigatorContainer: React.FC = () => {
     return (
         <NavigationContainer ref={navigationRef}>
             <StackNavigator />
-            <View style={{ position: 'absolute', bottom: 10, left: 0, right: 0 }}>
-                <Button title="Start Listening" onPress={startListening} />
-            </View>
+            <TouchableOpacity
+                onPress={startListening}
+                style={{
+                    position: 'absolute',
+                    bottom: 50,
+                    left: 0,
+                    right: 0,
+                    backgroundColor: 'orange',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: 15,
+                    marginHorizontal: 40,
+                    borderRadius: 40
+                }}>
+                <Text style={{
+                    fontSize: 20,
+                    color: 'white',
+                    fontWeight: 'bold'
+                }}>Start Listening</Text>
+            </TouchableOpacity>
         </NavigationContainer>
     );
 };

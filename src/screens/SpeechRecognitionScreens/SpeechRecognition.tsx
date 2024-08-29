@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { UserNavigationRootProps } from '../../ScreensTypes/ScreensTpes';
-import { Button, SafeAreaView, Text, View } from 'react-native';
+import { Button, SafeAreaView, Text,StyleSheet, View } from 'react-native';
 
 export const SpeechRecognition: React.FC<UserNavigationRootProps<"SpeechRecognition">> = (props) => {
   // const navigation = props.navigation;
@@ -9,12 +9,38 @@ export const SpeechRecognition: React.FC<UserNavigationRootProps<"SpeechRecognit
  
 
   return (
-       <SafeAreaView>
-        <Text>Speech Recognition</Text>
-       </SafeAreaView>
+    <SafeAreaView style={styles.container}>
+    <View style={styles.content}>
+      <Text style={styles.title}>Speech Recognition</Text>
+      <Text style={styles.description}>
+        Use the "Start Listening" button below to navigate through the app using your voice. 
+        Simply say the name of the screen you want to go to, and you'll be taken there directly. 
+        You can also say "Go back" to return to the previous screen.
+      </Text>
+    </View>
+  </SafeAreaView>
   );
 };
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 16,
+  },
+  content: {
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 16,
+  },
+  description: {
+    fontSize: 20,
+    marginHorizontal: 10,
+    color: '#666',
+  },
+});
 
 
 // import React, { useState, useEffect } from 'react';

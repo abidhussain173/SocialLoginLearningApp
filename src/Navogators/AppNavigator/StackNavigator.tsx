@@ -11,10 +11,10 @@ const StackNavigator = () => {
     return (
         <Stack.Navigator
             screenOptions={{
-                headerShown: true,
+                headerShown: false,
             }}
             // initialRouteName={userInfo ? "Home" : "Login"}
-            initialRouteName="Settings"
+            initialRouteName="SpeechRecognition"
         >
             {/* <Stack.Screen name="Home" component={HomeContainer} /> */}
             <Stack.Screen name="SpeechRecognition" component={SpeechRecognition} />
